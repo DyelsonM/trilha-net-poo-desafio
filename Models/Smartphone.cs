@@ -1,14 +1,22 @@
+using System;
+
 namespace DesafioPOO.Models
 {
+    // NÃO pode ser instanciada: serve como modelo
     public abstract class Smartphone
     {
-        public string Numero { get; set; }
-        // TODO: Implementar as propriedades faltantes de acordo com o diagrama
+        // Propriedades conforme diagrama
+        public string Numero { get; set; }          // +
+        private string Modelo { get; }              // -
+        private string IMEI { get; }                // -
+        private int Memoria { get; }                // -
 
-        public Smartphone(string numero)
+        protected Smartphone(string numero, string modelo, string imei, int memoria)
         {
             Numero = numero;
-            // TODO: Passar os parâmetros do construtor para as propriedades
+            Modelo = modelo;
+            IMEI = imei;
+            Memoria = memoria;
         }
 
         public void Ligar()
@@ -21,6 +29,8 @@ namespace DesafioPOO.Models
             Console.WriteLine("Recebendo ligação...");
         }
 
-        public abstract void InstalarAplicativo(string nomeApp);
+        // Cada marca instala de um jeito
+        public abstract void InstalarAplicativo(string nome);
+
     }
 }
